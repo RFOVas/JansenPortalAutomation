@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="MyLowesSuite" parallel="false">
+	<test name="MyLowesTest">
+		<classes>
+			<class name="com.lowes.mylowes.app1.SampleForBeforeMethod" />
+			<class name="com.lowes.mylowes.app2.SampleForBeforeClass" />
+		</classes>
+	</test>
+</suite>

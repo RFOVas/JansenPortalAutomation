@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="JensenSuite" parallel="false">
+	<test name="JensenTest">
+		<classes>
+			<class name="com.janssen.tests.SpkPortalAutomate.Login" />
+		</classes>
+	</test>
+</suite>
