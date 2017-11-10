@@ -2,7 +2,7 @@
 <suite name="JensenSuite" parallel="false">
 	<test name="JensenTest">
 		<classes>
-			<class name="com.janssen.tests.SpkPortalAutomate.Login" />
+			<class name="com.janssen.tests.SpkPortalAutomate.LoginTest" />
 		</classes>
 	</test>
 </suite>

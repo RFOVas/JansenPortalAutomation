@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="MyLowesSuite" parallel="false">
-	<test name="MyLowesTest">
+<suite name="RegressionSuite" parallel="false">
+	<test name="RegressionTest">
 		<classes>
-			<class name="com.lowes.mylowes.app1.SampleForBeforeMethod" />
-			<class name="com.lowes.mylowes.app2.SampleForBeforeClass" />
+			<class name="com.janssen.tests.SpkPortalAutomate.LoginTest" />
 		</classes>
 	</test>
 </suite>
