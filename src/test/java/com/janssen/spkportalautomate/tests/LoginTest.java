@@ -36,16 +36,16 @@ public class LoginTest {
 	public void testSelectBrand() throws Exception {
 
 		SpeakerPortalUtil speakerPortalUtil = new SpeakerPortalUtil();
-		speakerPortalUtil.utilWait();
+		speakerPortalUtil.customWait();
 		WebElement brandsDropDown = driver.findElement(By.cssSelector("#brandsDropDown"));
 		brandsDropDown.click();
-		speakerPortalUtil.utilWait();
+		speakerPortalUtil.customWait();
 		// brandsDropDown.visible() = 'Y'
 		Select dropdown = new Select(brandsDropDown);
 		dropdown.selectByIndex(1);
 
 		driver.findElement(By.xpath(".//*[@id='dLabel']")).click();
-		speakerPortalUtil.utilWait();
+		speakerPortalUtil.customWait();
 
 	}
 

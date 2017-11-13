@@ -2,7 +2,7 @@ package com.janssen.spkportalautomate.tests;
 
 public class SpeakerPortalUtil {
 
-	public void utilWait() throws InterruptedException {
+	public void customWait() throws InterruptedException {
 		Thread.sleep(1000);
 	}
 }
