@@ -1,4 +1,4 @@
-package com.janssen.tests.SpkPortalAutomate;
+package com.janssen.spkportalautomate.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
