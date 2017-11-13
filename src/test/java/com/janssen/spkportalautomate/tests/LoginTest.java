@@ -12,10 +12,12 @@ import org.testng.annotations.Test;
  */
 public class LoginTest {
 
-	@Test
+	WebDriver driver;
+
+	@Test(priority = 1)
 	public void testLogin() throws Exception {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\MBoreddy\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		driver = new ChromeDriver();
 		driver.get("https://janssenspeakerportal2.d2clients.com/login");
 		WebElement emailInputLocator = driver.findElement(By.cssSelector("#email"));
 		WebElement passwordInputLocator = driver.findElement(By.cssSelector("#password"));
@@ -28,54 +30,35 @@ public class LoginTest {
 		passwordInputLocator.sendKeys("Password1!");
 		submitLogInButtonLocator.click();
 
-		Thread.sleep(2000);
+	}
+
+	@Test(priority = 2)
+	public void testSelectBrand() throws Exception {
+
+		utilWait();
 		WebElement brandsDropDown = driver.findElement(By.cssSelector("#brandsDropDown"));
 		brandsDropDown.click();
-		Thread.sleep(1000);
+		utilWait();
 		// brandsDropDown.visible() = 'Y'
 		Select dropdown = new Select(brandsDropDown);
 		dropdown.selectByIndex(1);
 
 		driver.findElement(By.xpath(".//*[@id='dLabel']")).click();
-		Thread.sleep(1000);
+		utilWait();
 
+	}
+
+	private void utilWait() throws InterruptedException {
+		Thread.sleep(1000);
+	}
+
+	@Test(priority = 3)
+	public void testLogout() throws Exception {
 		WebElement Logout = driver.findElement(By.linkText("Logout"));
 		Logout.click();
 	}
 
-	@Test
-	public void testLoginToFacebook() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\MBoreddy\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.get("https://janssenspeakerportal2.d2clients.com/login");
-		WebElement emailInputLocator = driver.findElement(By.cssSelector("#email"));
-		WebElement passwordInputLocator = driver.findElement(By.cssSelector("#password"));
-		WebElement submitLogInButtonLocator = driver.findElement(By.cssSelector("#loginButton"));
-
-		System.out.println("email locator     " + emailInputLocator);
-		System.out.println("password locator     " + passwordInputLocator);
-
-		emailInputLocator.sendKeys("Testmgarc204@ITS.JNJ.com");
-		passwordInputLocator.sendKeys("Password1!");
-		submitLogInButtonLocator.click();
-
-		Thread.sleep(2000);
-		WebElement brandsDropDown = driver.findElement(By.cssSelector("#brandsDropDown"));
-		brandsDropDown.click();
-		Thread.sleep(1000);
-		// brandsDropDown.visible() = 'Y'
-		Select dropdown = new Select(brandsDropDown);
-		dropdown.selectByIndex(1);
-
-		driver.findElement(By.xpath(".//*[@id='dLabel']")).click();
-		Thread.sleep(1000);
-
-		WebElement Logout = driver.findElement(By.linkText("Logout"));
-		Logout.click();
-	}
-
-	
-	@Test
+	@Test(priority = 4)
 	public void exampleOfTestNgMaven() {
 		System.out.println("Mary This is TestNG-Maven Example");
 	}
