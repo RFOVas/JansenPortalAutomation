@@ -35,21 +35,18 @@ public class LoginTest {
 	@Test(priority = 2)
 	public void testSelectBrand() throws Exception {
 
-		utilWait();
+		SpeakerPortalUtil speakerPortalUtil = new SpeakerPortalUtil();
+		speakerPortalUtil.utilWait();
 		WebElement brandsDropDown = driver.findElement(By.cssSelector("#brandsDropDown"));
 		brandsDropDown.click();
-		utilWait();
+		speakerPortalUtil.utilWait();
 		// brandsDropDown.visible() = 'Y'
 		Select dropdown = new Select(brandsDropDown);
 		dropdown.selectByIndex(1);
 
 		driver.findElement(By.xpath(".//*[@id='dLabel']")).click();
-		utilWait();
+		speakerPortalUtil.utilWait();
 
-	}
-
-	private void utilWait() throws InterruptedException {
-		Thread.sleep(1000);
 	}
 
 	@Test(priority = 3)
