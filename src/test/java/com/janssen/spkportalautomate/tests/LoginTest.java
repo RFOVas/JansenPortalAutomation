@@ -4,7 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
@@ -15,8 +19,9 @@ public class LoginTest {
 	WebDriver driver;
 
 	@Test(priority = 1)
-	public void testLogin() throws Exception {
-		loadDriver();
+	@Parameters(value = "broswerName")
+	public void testLogin(@Optional("ie") String browser) throws Exception {
+		loadDriver(browser);
 		driver.get("https://janssenspeakerportal2.d2clients.com/login");
 		WebElement emailInputLocator = driver.findElement(By.cssSelector("#email"));
 		WebElement passwordInputLocator = driver.findElement(By.cssSelector("#password"));
@@ -31,10 +36,40 @@ public class LoginTest {
 
 	}
 
-	private void loadDriver() {
+	@SuppressWarnings({ "deprecation" })
+	private void loadDriver(String broswer) throws InterruptedException {
 		System.out.println("############################Driver Load Start####################################");
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\MBoreddy\\chromedriver.exe");
-		driver = new ChromeDriver();
+
+		if (broswer.equalsIgnoreCase("chrome")) {
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\MBoreddy\\chromedriver.exe");
+			driver = new ChromeDriver();
+		} else if (broswer.equalsIgnoreCase("ie")) {
+
+			/*
+			 * Make sure to set the IE zoom to 100% only
+			 */
+
+			/*
+			 * Make sure the protected mode settings
+			 * https://stackoverflow.com/questions/31134408/unable-to-find-
+			 * element- on-closed-window-on-ie-11-with-selenium
+			 */
+
+			/*
+			 * Make sure to use IE32 driver to solve sendKeys typing slow issue
+			 */
+
+			DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
+			capability.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			capability.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+
+			System.setProperty("webdriver.ie.driver", "C:\\Users\\MBoreddy\\IEDriverServer.exe");
+			driver = new InternetExplorerDriver(capability);
+			driver.manage().window().maximize();
+			// Thread.sleep(3000);
+
+		}
+
 		System.out.println("############################Driver Load End######################################");
 	}
 
