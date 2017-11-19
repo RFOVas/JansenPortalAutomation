@@ -16,8 +16,7 @@ public class LoginTest {
 
 	@Test(priority = 1)
 	public void testLogin() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\MBoreddy\\chromedriver.exe");
-		driver = new ChromeDriver();
+		loadDriver();
 		driver.get("https://janssenspeakerportal2.d2clients.com/login");
 		WebElement emailInputLocator = driver.findElement(By.cssSelector("#email"));
 		WebElement passwordInputLocator = driver.findElement(By.cssSelector("#password"));
@@ -30,6 +29,13 @@ public class LoginTest {
 		passwordInputLocator.sendKeys("Password1!");
 		submitLogInButtonLocator.click();
 
+	}
+
+	private void loadDriver() {
+		System.out.println("############################Driver Load Start####################################");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\MBoreddy\\chromedriver.exe");
+		driver = new ChromeDriver();
+		System.out.println("############################Driver Load End######################################");
 	}
 
 	@Test(priority = 2)
