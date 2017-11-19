@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="JensenSuite" parallel="false">
-	<test name="JensenTest">
+<!-- 	<test name="JensenLoginTestChrome">
+	    <parameter name="browser_name" value="chrome" />
+		<classes>
+			<class name="com.janssen.spkportalautomate.tests.LoginTest" />
+		</classes>
+	</test> -->
+	<test name="JensenLoginTestFirefox"> <!-- This  name should be unique -->
+	    <parameter name="browser_name" value="firefox" />
 		<classes>
 			<class name="com.janssen.spkportalautomate.tests.LoginTest" />
 		</classes>
