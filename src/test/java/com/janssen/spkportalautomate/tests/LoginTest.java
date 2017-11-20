@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -17,10 +18,19 @@ import org.testng.annotations.Test;
 public class LoginTest {
 
 	WebDriver driver;
+	
+	@AfterClass
+	public void tearDown() throws InterruptedException{
+		SpeakerPortalUtil speakerPortalUtil = new SpeakerPortalUtil();
+		speakerPortalUtil.customWait();
+		speakerPortalUtil.customWait();
+		speakerPortalUtil.customWait();
+		driver.quit();
+	}
 
 	@Test(priority = 1)
 	@Parameters(value = "broswerName")
-	public void testLogin(@Optional("ie") String browser) throws Exception {
+	public void testLogin(@Optional("chrome") String browser) throws Exception {
 		loadDriver(browser);
 		driver.get("https://janssenspeakerportal2.d2clients.com/login");
 		WebElement emailInputLocator = driver.findElement(By.cssSelector("#email"));
@@ -36,6 +46,34 @@ public class LoginTest {
 
 	}
 
+	@Test(priority = 2)
+	public void testSelectBrand() throws Exception {
+
+		SpeakerPortalUtil speakerPortalUtil = new SpeakerPortalUtil();
+		speakerPortalUtil.customWait();
+		WebElement brandsDropDown = driver.findElement(By.cssSelector("#brandsDropDown"));
+		brandsDropDown.click();
+		speakerPortalUtil.customWait();
+		// brandsDropDown.visible() = 'Y'
+		Select dropdown = new Select(brandsDropDown);
+		dropdown.selectByIndex(1);
+
+		driver.findElement(By.xpath(".//*[@id='dLabel']")).click();
+		speakerPortalUtil.customWait();
+
+	}
+
+	@Test(priority = 3)
+	public void testLogout() throws Exception {
+		WebElement Logout = driver.findElement(By.linkText("Logout"));
+		Logout.click();
+	}
+
+	@Test(priority = 4)
+	public void exampleOfTestNgMaven() {
+		System.out.println("Mary This is TestNG-Maven Example");
+	}
+	
 	@SuppressWarnings({ "deprecation" })
 	private void loadDriver(String broswer) throws InterruptedException {
 		System.out.println("############################Driver Load Start####################################");
@@ -71,33 +109,5 @@ public class LoginTest {
 		}
 
 		System.out.println("############################Driver Load End######################################");
-	}
-
-	@Test(priority = 2)
-	public void testSelectBrand() throws Exception {
-
-		SpeakerPortalUtil speakerPortalUtil = new SpeakerPortalUtil();
-		speakerPortalUtil.customWait();
-		WebElement brandsDropDown = driver.findElement(By.cssSelector("#brandsDropDown"));
-		brandsDropDown.click();
-		speakerPortalUtil.customWait();
-		// brandsDropDown.visible() = 'Y'
-		Select dropdown = new Select(brandsDropDown);
-		dropdown.selectByIndex(1);
-
-		driver.findElement(By.xpath(".//*[@id='dLabel']")).click();
-		speakerPortalUtil.customWait();
-
-	}
-
-	@Test(priority = 3)
-	public void testLogout() throws Exception {
-		WebElement Logout = driver.findElement(By.linkText("Logout"));
-		Logout.click();
-	}
-
-	@Test(priority = 4)
-	public void exampleOfTestNgMaven() {
-		System.out.println("Mary This is TestNG-Maven Example");
 	}
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="JensenSuite" parallel="false">
-<!-- 	<test name="JensenLoginTestChrome">
+	<test name="JensenLoginTestChrome">
 		<parameter name="broswerName" value="chrome" />
 		<classes>
 			<class name="com.janssen.spkportalautomate.tests.LoginTest" />
 		</classes>
-	</test> -->
+	</test>
 </suite>
