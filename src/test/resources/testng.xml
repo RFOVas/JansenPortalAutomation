@@ -6,11 +6,4 @@
 			<class name="com.janssen.spkportalautomate.tests.LoginTest" />
 		</classes>
 	</test> -->
-
-	<test name="JensenLoginTestIE">
-		<parameter name="broswerName" value="ie" />
-		<classes>
-			<class name="com.janssen.spkportalautomate.tests.LoginTest" />
-		</classes>
-	</test>
 </suite>

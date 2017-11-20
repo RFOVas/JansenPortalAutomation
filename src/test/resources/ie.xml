@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="JensenSuite" parallel="false">
+	<test name="JensenLoginTestIE">
+		<parameter name="broswerName" value="ie" />
+		<classes>
+			<class name="com.janssen.spkportalautomate.tests.ie.LoginTest" />
+		</classes>
+	</test>
+
+</suite>
